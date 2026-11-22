@@ -137,8 +137,9 @@ document.addEventListener('click',event=>{if(event.target.id!=='copy')return;con
   .row .p-cat,.row .p-name{height:40px;min-height:40px}
   .check{grid-column:auto;grid-row:auto;gap:0;font-size:0}
   .check input{width:25px;height:25px}
-  .total{grid-template-columns:1fr 1fr;padding:12px 9px}
-  .total span:nth-child(2){display:none}
+  .total{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:12px 9px;align-items:center}
+  .total span:nth-child(2),.total span:nth-child(3){display:none}
+  #total{grid-column:2;grid-row:1;justify-self:end;text-align:right}
   .card:last-of-type .btns{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:6px}
   .card:last-of-type .btn{min-width:0;padding:10px 5px;font-size:11px;white-space:nowrap}
 }
