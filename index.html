@@ -133,7 +133,9 @@ document.addEventListener('click',event=>{if(event.target.id!=='copy')return;con
   .head{display:grid;font-size:10px;letter-spacing:0;text-align:center}
   .head span:nth-child(1),.head span:nth-child(2),.head span:nth-child(4){text-align:left}
   .row .p-name,.row .p-money{grid-column:auto;min-width:0}
-  .row input,.row select{min-width:0;min-height:40px;padding:6px;font-size:13px}
+  /* iPhone chỉ tự phóng to khi ô nhập có chữ nhỏ hơn 16px. */
+  input,select{font-size:16px!important;-webkit-text-size-adjust:100%}
+  .row input,.row select{min-width:0;min-height:40px;padding:6px;font-size:16px}
   .row .p-cat,.row .p-name{height:40px;min-height:40px}
   .check{grid-column:auto;grid-row:auto;gap:0;font-size:0}
   .check input{width:25px;height:25px}
