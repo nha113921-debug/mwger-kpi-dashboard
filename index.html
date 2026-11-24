@@ -36,11 +36,11 @@
 <h2 class="title">Hiệu quả QĐ</h2>
 <div class="metrics">
 <div class="metric good">
-<div class="n">Doanh thu thực</div>
+<div class="n">DT Thực</div>
 <div class="v" id="real">0 đ</div>
 </div>
 <div class="metric good">
-<div class="n">Doanh thu quy đổi</div>
+<div class="n">DTQĐ</div>
 <div class="v" id="qd">0 đ</div>
 </div>
 <div class="metric">
@@ -145,6 +145,10 @@ document.addEventListener('click',event=>{if(event.target.id!=='copy')return;con
   .card:last-of-type .btn{min-width:0;padding:10px 5px;font-size:11px;white-space:nowrap}
 }
 </style>
+<script>
+/* Rút gọn báo cáo và thêm trạng thái trả chậm. */
+(()=>{const report=document.getElementById('report');const apply=()=>{let text=report.textContent.replace('Doanh thu thực:','DT Thực:').replace('Doanh thu quy đổi:','DTQĐ:');const late=[...document.querySelectorAll('#rows .row')].some(r=>r.querySelector('.p-late').checked&&Number(r.querySelector('.p-money').value.replace(/\D/g,''))>0);const line=`👉 Trả chậm: ${late?'✅':'❌'}`;if(!text.includes('👉 Trả chậm:'))text+=`\n${line}`;else text=text.replace(/👉 Trả chậm: [✅❌]/,line);if(text!==report.textContent)report.textContent=text};apply();new MutationObserver(apply).observe(report,{childList:true,characterData:true,subtree:true})})();
+</script>
 <script>
 /* Không còn dùng thông tin siêu thị/cửa hàng trong giao diện, báo cáo hoặc dữ liệu đã lưu. */
 (()=>{const store=document.getElementById('store');store.value='';try{const key='mwger-kpi-clean',saved=JSON.parse(localStorage.getItem(key));if(saved?.store){delete saved.store;localStorage.setItem(key,JSON.stringify(saved))}}catch{}document.getElementById('employee').dispatchEvent(new Event('input',{bubbles:true}))})();
